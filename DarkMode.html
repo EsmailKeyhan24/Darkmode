@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darkmode</title>
+    <style>
+        body{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content:center;
+            align-items: center;
+            overflow-x: hidden;
+            transition:.5s linear;
+            font-family: sans-serif;
+            direction: rtl;
+        }
+        .darkmode{
+            background-color:black;
+            color:white;
+        }
+        div{
+            width: 600px;
+            height: 150px;
+            /* border:1px solid black; */
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            flex-direction: column;
+        }
+        div>input{
+            width: 150px;
+            height: 40px;
+            border-radius: 10px;
+            background:transparent;
+            outline:none;
+            border:2px solid black;
+            display: none;
+        }
+        div>label{
+            display: block;
+            width: 150px;
+            height: 40px;
+            background-color:black;
+            border-radius:20px;
+            position: relative;
+        }
+       div>label::after{
+        content:'';
+        display: block;
+        width: 40px;
+        height: 40px;
+        background-color:gray;
+        border-radius: 50%;
+        position: absolute;
+        top: -1px;left: -2px;
+        transition:.5s;
+       }
+       div>input:checked~label{
+        background-color:blueviolet;
+       }
+       div>input:checked~label::after{
+            left:73%;;top:-1px;
+       }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>برنامه نویسی / Front_End Devloper</h1>
+        <input type="checkbox" id="Darkmode">
+        <label for="Darkmode" onclick="Darkmode()"></label>
+    </div>
+</body>
+    <script>
+        let flag=1
+        let content=document.getElementsByTagName('body')[0]
+        function Darkmode(){
+            if(flag % 2){
+                content.classList.add('darkmode')
+            }else{
+                content.classList.remove('darkmode')
+            }
+            flag++
+        }
+    </script>
+</html>
